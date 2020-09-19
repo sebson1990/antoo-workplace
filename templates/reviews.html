@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     
 </head>
 <body>
-    {% for reviews in reviews %}
-        {{review.review.title}}
-        {{review.review.content}}
+    {% for review in Reviews %}
+        {{review.title}}
+        {{review.content}}
     {% endfor %}
 </body>
 </html>

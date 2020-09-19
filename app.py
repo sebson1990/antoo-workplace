@@ -5,14 +5,15 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
+
 app.config["MONGO_DBNAME"] = 'myfirstdb'
-app.config["MONGO_URI"] = 'mongodb+srv://Sebson1990:ZJREXjhCSSPZOp66@cluster0.g4vuv.mongodb.net/myfirstdb?retryWrites=true&w=majority'
+app.config["MONGO_URI"] = 'mongodb+srv://Sebson1990:ZJREXjhCSSPZOp66@cluster0.g4vuv.mongodb.net/myfirstdb?ssl=true&ssl_cert_reqs=CERT_NONE'
 mongo = PyMongo(app)
 
 @app.route('/')
 @app.route('/get_reviews')
 def get_reviews():
-    return render_template("reviews.html",reviews=mongo.db.reviews.find())
+    return render_template("reviews.html",Reviews=mongo.db.Reviews.find())
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
