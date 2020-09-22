@@ -1,5 +1,27 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 /* styling the Navbar */
 
-.navbar-color {
-    background-color: black;
+.navbar-style {
+    background-color:white;
+    
 }
+
+.navbar-elements {
+    color: #7F7F7F !important;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.add-review-button {
+    background-color: #ECA400 !important;
+}
+
+.logo-style {
+    margin-left: 10px;
+}
+
