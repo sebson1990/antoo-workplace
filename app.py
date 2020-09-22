@@ -15,6 +15,18 @@ mongo = PyMongo(app)
 def get_reviews():
     return render_template("reviews.html",Reviews=mongo.db.Reviews.find())
 
+@app.route('/add_review')
+def add_review():
+    return render_template("addreview.html")
+
+@app.route('/company_list')
+def company_list():
+    return render_template("companylist.html")
+
+@app.route('/company_profile')
+def company_profile():
+    return render_template("companyprofile.html")
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
         port=(os.environ.get('PORT')),
