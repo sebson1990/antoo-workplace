@@ -1,4 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
 
+<br>
+<h3 class="center-text">Add a new review here:</h3>
+<br>
+
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="col s12 m2 l3"></div>
+            <div class="input-field col s12 m8 l6">
+                <select>
+                    <option value="" disabled selected>Choose company</option>
+                    <option value="1">Company 1</option>
+                    <option value="2">Company 2</option>
+                </select>
+                <label>Company</label>
+            </div>
+            <div class="col s12 m2 l3"></div>
+        </div>
+        <div class="row">
+            <div class="col s12 m2 l3"></div>
+            <div class="input-field col s12 m8 l6">
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="textarea1">Review title</label>
+            </div>
+            <div class="col s12 m2 l3"></div>
+        </div>
+        <div class="row">
+            <div class="col s12 m2 l3"></div>
+            <div class="input-field col s12 m8 l6">
+                <textarea id="textarea1" class="materialize-textarea"></textarea>
+                <label for="textarea1">Write your review here</label>
+            </div>
+            <div class="col s12 m2 l3"></div>
+        </div>
+    </form>
+</div>
+
 {% endblock %}
