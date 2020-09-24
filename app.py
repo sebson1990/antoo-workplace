@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import (Flask, flash, render_template, redirect, request, url_for, flash)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -26,7 +26,8 @@ def add_review():
     if request.method == "POST": 
         review = {
             "review_title": request.form.get("review_title"),
-            "review_content": request.form.get("review_content")
+            "review_content": request.form.get("review_content"),
+            "agency_name": request.form.get("agency_name")
         }
         mongo.db.Reviews.insert_one(review)
         flash("Review Successfully Added")
@@ -35,10 +36,18 @@ def add_review():
     companies = mongo.db.Agencies.find().sort("agency_name", 1)
     return render_template("addreview.html", companies=companies)
 
-@app.route("/edit_review/<review_id>")
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
-    review= mongo.db.Reviews.find_one({"_id": ObjectId(review_id)})
+    if request.method == 'POST':
+        submit = {
+            "agency_name": request.form.get("agency_name"),
+            "review_title": request.form.get("review_title"),
+            "review_content": request.form.get("review_content")
+        }
+        mongo.db.Reviews.update({"_id": ObjectId(review_id)}, submit)
+        flash("Review Successfully Updated")
 
+    review= mongo.db.Reviews.find_one({"_id": ObjectId(review_id)})
     companies = mongo.db.Agencies.find().sort("agency_name", 1)
     return render_template("editreview.html", review=review, companies=companies)
 

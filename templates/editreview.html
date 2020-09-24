@@ -28,8 +28,7 @@
         <div class="row">
             <div class="col s12 m2 l3"></div>
             <div class="input-field col s12 m8 l6">
-                <input id="review_title" name="review_title" minlength="5" maxlength="50" class="materialize-textarea"
-                    required></input>
+                <input value="{{ review.review_title }}" id="review_title" name="review_title" minlength="5" maxlength="50" class="materialize-textarea" required></input>
                 <label for="textarea1">Review title</label>
             </div>
             <div class="col s12 m2 l3"></div>
@@ -38,7 +37,7 @@
             <div class="col s12 m2 l3"></div>
             <div class="input-field col s12 m8 l6">
                 <textarea id="review_content" name="review_content" class="materialize-textarea" minlength="5"
-                    maxlength="200" required></textarea>
+                    maxlength="200" required>{{ review.review_content }}</textarea>
                 <label for="textarea1">Write your review here</label>
             </div>
             <div class="col s12 m2 l3"></div>
