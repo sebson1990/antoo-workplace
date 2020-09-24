@@ -17,6 +17,10 @@ app.secret_key = os.environ.get("SECRET_KEY")
 def get_reviews():
     return render_template("reviews.html",Reviews=mongo.db.Reviews.find())
 
+@app.route('/get_companies')
+def get_companies():
+    return render_template("companylist.html", agencies=mongo.db.Agencies.find())
+
 @app.route('/add_review', methods=["GET", "POST"])
 def add_review():
     if request.method == "POST": 
@@ -30,6 +34,21 @@ def add_review():
 
     companies = mongo.db.Agencies.find().sort("agency_name", 1)
     return render_template("addreview.html", companies=companies)
+
+@app.route("/edit_review/<review_id>")
+def edit_review(review_id):
+    review= mongo.db.Reviews.find_one({"_id": ObjectId(review_id)})
+
+    companies = mongo.db.Agencies.find().sort("agency_name", 1)
+    return render_template("editreview.html", review=review, companies=companies)
+
+@app.route("/remove_review/<review_id>")
+def remove_review(review_id):
+    review = mongo.db.Reviews.remove({"_id": ObjectId(review_id)})
+
+    flash("Review deleted successfully")
+    return render_template("reviews.html",Reviews=mongo.db.Reviews.find())
+
 
 @app.route('/company_list')
 def company_list():

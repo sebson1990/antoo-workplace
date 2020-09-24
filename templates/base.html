@@ -23,10 +23,10 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     </li>
-                    <li><a class="navbar-elements" href="{{ url_for('get_reviews') }}">Home</a></li>
-                    <li><a class="navbar-elements" href="{{ url_for('company_list') }}">List of workplaces</a></li>
-                    <li><a class="waves-effect waves-light btn add-review-button" href="{{ url_for('add_review') }}">Add
-                            a review <i class="material-icons right">add_circle</i></a></li>
+                    <!-- <li><a class="navbar-elements" href="{{ url_for('get_reviews') }}">Home</a></li> -->
+                    <!-- <li><a class="navbar-elements" href="{{ url_for('get_companies') }}">List of workplaces</a></li> -->
+                    <!-- <li><a class="waves-effect waves-light btn add-review-button" href="{{ url_for('add_review') }}">Add -->
+                            <!-- a review <i class="material-icons right">add_circle</i></a></li> -->
                 </ul>
             </div>
         </nav>
@@ -48,7 +48,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems);
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems);
   });
+
+
 
 </script>
 

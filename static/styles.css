@@ -34,3 +34,13 @@ body {
     margin-bottom: 0px !important;
 }
 
+
+/* Review cards */
+.dropdown-trigger {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: gold;
+}
+
+

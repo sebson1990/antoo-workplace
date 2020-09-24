@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br>
+<h3 class="center-text">Edit your review:</h3>
+<br>
+
+<div class="row">
+    <form class="col s12 card-panel grey lighten-5" method="POST"
+        action="{{ url_for('edit_review', review_id=review._id) }}">
+        <div class="row">
+            <div class="col s12 m2 l3"></div>
+            <div class="input-field col s12 m8 l6">
+                <select id="agency_name" name="agency_name" class="validate" required>
+                    <option value="" disabled selected>Choose company</option>
+                    {% for company in companies %}
+                        {% if company.agency_name == review.agency_name %}
+                            <option value="{{ company.agency_name }}" selected>{{ company.agency_name }}</option>
+                        {% else %}
+                            <option value="{{ company.agency_name }}">{{ company.agency_name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <label for="agency_name">Company</label>
+            </div>
+            <div class="col s12 m2 l3"></div>
+        </div>
+        <div class="row">
+            <div class="col s12 m2 l3"></div>
+            <div class="input-field col s12 m8 l6">
+                <input id="review_title" name="review_title" minlength="5" maxlength="50" class="materialize-textarea"
+                    required></input>
+                <label for="textarea1">Review title</label>
+            </div>
+            <div class="col s12 m2 l3"></div>
+        </div>
+        <div class="row">
+            <div class="col s12 m2 l3"></div>
+            <div class="input-field col s12 m8 l6">
+                <textarea id="review_content" name="review_content" class="materialize-textarea" minlength="5"
+                    maxlength="200" required></textarea>
+                <label for="textarea1">Write your review here</label>
+            </div>
+            <div class="col s12 m2 l3"></div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large darken-1 text-shadow">
+                    Edit Review <i class="fas fa-plus-square right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
