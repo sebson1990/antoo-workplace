@@ -63,10 +63,16 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.FormSelect.init(elems);
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems);
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
   });
-
-
-
+// trying to trigger the modal from the dropdown menu, but it is not working. 
+// The button to "add a company" goes to the bottom of the form and it creates bad UX
+function triggerModal() {
+    var modal = document.getElementById("modal1");
+    modal.open(modal)
+    console.log()
+}
 </script>
 
 </html>

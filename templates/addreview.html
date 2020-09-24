@@ -2,50 +2,73 @@
 {% block content %}
 
 <br>
-<h3 class="center-text">Add a new review here:</h3>
+<h3 class="center-text">Add a new review:</h3>
 <br>
-
 <div class="row">
-    <form class="col s12 card-panel grey lighten-5" method="POST" action="">
-        <div class="row">
-            <div class="col s12 m2 l3"></div>
-            <div class="input-field col s12 m8 l6">
-                <select id="agency_name" name="agency_name" class="validate" required>
-                    <option value="" disabled selected>Choose company</option>
-                    {% for company in companies %}
-                    <option value="{{ company.agency_name }}">{{ company.agency_name }}</option>
-                    {% endfor %}
-                </select>
-                <label for="agency_name">Company</label>
+    <div class="col s12 m2 l3"></div>
+    <div class="col s12 m8 l6">
+        <form method="POST" action="">
+            <div class="row">
+                <div class="col s10">
+                    <select id="agency_name" name="agency_name" class="validate" required>
+                        <option value="" disabled selected>Choose company</option>
+                        {% for company in companies %}
+                        <option value="{{ company.agency_name }}">{{ company.agency_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="agency_name">Company</label>
+                </div>
+                <div class="col s2">Can't find it?
+                    <button class="" onclick="document.getElementById('primaryButton').click()">Add new </button>
+                </div>
             </div>
-            <div class="col s12 m2 l3"></div>
-        </div>
-        <div class="row">
-            <div class="col s12 m2 l3"></div>
-            <div class="input-field col s12 m8 l6">
+
+
+            <div class="input-field ">
                 <input id="review_title" name="review_title" minlength="5" maxlength="50" class="materialize-textarea"
                     required></input>
                 <label for="textarea1">Review title</label>
             </div>
-            <div class="col s12 m2 l3"></div>
-        </div>
-        <div class="row">
-            <div class="col s12 m2 l3"></div>
-            <div class="input-field col s12 m8 l6">
+            <div class="input-field">
                 <textarea id="review_content" name="review_content" class="materialize-textarea" minlength="5"
                     maxlength="200" required></textarea>
                 <label for="textarea1">Write your review here</label>
             </div>
-            <div class="col s12 m2 l3"></div>
-        </div>
-        <div class="row">
-            <div class="col s12 center-align">
-                <button type="submit" class="btn-large darken-1 text-shadow">
-                    Add Review <i class="fas fa-plus-square right"></i>
-                </button>
+            <button type="submit" class="btn-large darken-1 text-shadow">
+                Add Review <i class="fas fa-plus-square right"></i>
+            </button>
+        </form>
+    </div>
+    <div class="col s12 m2 l3">
+        
+    </div>
+</div>
+<!-- modal for adding the company -->
+        <!-- Modal Trigger -->
+        <a id="primaryButton" class="waves-effect waves-light btn modal-trigger" href="#modal1">Add a new company</a>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Add a new company</h4>
+                <!-- form to add a company -->
+                <form class="col s12 card-panel grey lighten-5" method="POST" action="">
+                    <input id="review_title" name="review_title" minlength="5" maxlength="50"
+                        class="materialize-textarea" required></input>
+                    <label for="textarea1">Review title</label>
+                    <textarea id="review_content" name="review_content" class="materialize-textarea" minlength="5"
+                        maxlength="200" required></textarea>
+                    <label for="textarea1">Write your review here</label>
+                    <button type="submit" class="btn-large darken-1 text-shadow">
+                        Add Review <i class="fas fa-plus-square right"></i>
+                    </button>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                    </div>
+                </form>
+                <!--  -->
             </div>
         </div>
-    </form>
-</div>
+        <!--  -->
 
 {% endblock %}
