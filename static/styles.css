@@ -43,4 +43,24 @@ body {
     color: gold;
 }
 
+/* company profile */
+
+.company-profile-card-top {
+    border-bottom: 1px solid grey;
+}
+
+.company-logo {
+    border: 1px solid grey;
+    margin-top: 11px;
+    text-align: center;
+}
+
+.company-icon {
+    max-width: 100%;
+}
+
+.review-cards {
+    margin: 5px;
+}
+
 

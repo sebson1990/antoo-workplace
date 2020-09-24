@@ -65,7 +65,9 @@ def company_list():
 
 @app.route('/company_profile')
 def company_profile():
-    return render_template("companyprofile.html")
+    return render_template("companyprofile.html", Reviews=mongo.db.Reviews.find())
+
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
