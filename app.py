@@ -29,13 +29,28 @@ def get_companies():
 
 #adding new reviews:
 
+#@app.route('/add_review', methods=["GET", "POST"])
+#def add_review():
+#    f = AddReviewForm()
+#    if f.validate_on_submit():
+#        review = {
+#            "review_title": f.review_title.data,
+#            "review_content": f.review_content.data,
+#            "agency_name": request.form.get("agency_name")
+#        }
+#        mongo.db.Reviews.insert_one(review)
+#        flash("Review Successfully Added")
+#        return redirect(url_for("get_reviews"))
+#
+#    companies = mongo.db.Agencies.find().sort("agency_name", 1)
+#    return render_template("addreview.html", companies=companies, form=f)
+
 @app.route('/add_review', methods=["GET", "POST"])
 def add_review():
-    f = AddReviewForm()
-    if f.validate_on_submit():
+    if request.method == "POST": 
         review = {
-            "review_title": f.review_title.data,
-            "review_content": f.review_content.data,
+            "review_title": request.form.get("review_title"),
+            "review_content": request.form.get("review_content"),
             "agency_name": request.form.get("agency_name")
         }
         mongo.db.Reviews.insert_one(review)
@@ -43,22 +58,7 @@ def add_review():
         return redirect(url_for("get_reviews"))
 
     companies = mongo.db.Agencies.find().sort("agency_name", 1)
-    return render_template("addreview.html", companies=companies, form=f)
-
-#@app.route('/add_review', methods=["GET", "POST"])
-#def add_review():
- #   if request.method == "POST": 
-  #      review = {
-   #         "review_title": request.form.get("review_title"),
-    #        "review_content": request.form.get("review_content"),
-     #       "agency_name": request.form.get("agency_name")
-      #  }
-      #  mongo.db.Reviews.insert_one(review)
-      #  flash("Review Successfully Added")
-      #  return redirect(url_for("get_reviews"))
-
-   # companies = mongo.db.Agencies.find().sort("agency_name", 1)
-  #  return render_template("addreview.html", companies=companies)
+    return render_template("addreview.html", companies=companies)
 
 #editing reviews:
 
@@ -90,7 +90,7 @@ def remove_review(review_id):
 
 @app.route('/add_company', methods=["GET", "POST"])
 def add_company():
-    if request.method == "POST": 
+    #if request.method == "POST": 
         company = {
             "company_name": request.form.get("company_name"),
             "company_location": request.form.get("company_name"),
