@@ -81,19 +81,19 @@ def edit_review(review_id):
 
 @app.route("/remove_review/<review_id>")
 def remove_review(review_id):
-    review = mongo.db.Reviews.remove({"_id": ObjectId(review_id)})
+    review = mongo.db.Reviews.delete_one({"_id": ObjectId(review_id)})
 
     flash("Review deleted successfully")
-    return render_template("reviews.html",Reviews=mongo.db.Reviews.find())
-
+    return redirect('get_reviews')
+    
 #adding new companies:
 
-@app.route('/add_company', methods=["GET", "POST"])
+@app.route('/add_company', methods=["POST"])
 def add_company():
     if request.method == "POST": 
         company = {
             "company_name": request.form.get("company_name"),
-            "company_location": request.form.get("company_name"),
+            "company_location": request.form.get("company_location"),
         }
         mongo.db.Reviews.insert_one(company)
         flash("Company Successfully Added")
