@@ -63,6 +63,10 @@ body {
     margin: 5px;
 }
 
+.card-title {
+    font-weight: 200px;
+}
+
 /* Navbar left */
 
 /* The sidebar menu */

@@ -18,9 +18,9 @@
         <nav>
             <div class="nav-wrapper navbar-style">
                 <a href="#!" class="brand-logo navbar-elements logo-style">
-                    Rate Your Workplace!
+                    <i class="large material-icons">business</i> Rate Your Workplace!
                 </a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <a href="{{ url_for('get_reviews') }}" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     </li>
                     <li><a class="navbar-elements" href="{{ url_for('get_reviews') }}">Home</a></li>

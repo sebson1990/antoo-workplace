@@ -9,11 +9,7 @@
   <div class="col s12 m8 l6">
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
-        
-        {% for agency in agencies %}
-        <div><i class="material-icons">business</i> {{agency.agency_name}}</div>
-        <div><i class="material-icons">location_on</i> {{agency.agency_location}}</div>
-        {% endfor %}
+        <div><i class="material-icons">business</i> {{review.agency_name}} {{review._id}}</div>
         <br>
         <span class="card-title">{{review.review_title}}
           <!-- Dropdown Trigger -->

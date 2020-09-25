@@ -51,7 +51,7 @@ def add_review():
         review = {
             "review_title": request.form.get("review_title"),
             "review_content": request.form.get("review_content"),
-            "agency_name": request.form.get("agency_name")
+            "agency_name": request.form.get("agency_name"),
         }
         mongo.db.Reviews.insert_one(review)
         flash("Review Successfully Added")

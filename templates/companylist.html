@@ -9,13 +9,19 @@
   <div class="col s12 m8 l6">
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
-        <span class="card-title">{{agency.agency_name}}
-          <!-- Dropdown Trigger -->
-        </span>
+        <div class="card-title">{{agency.agency_name}}
+        </div>
+        <ul>
+          <li><i class="material-icons">location_on</i> {{agency.agency_location}}</li>
+          <br>
+          <li><i class="material-icons">mood</i> Postiive reviews:#</li>
+          <br>
+          <li><i class="material-icons">mood_bad</i> Negative reviews:#</li>
+      </ul>
       </div>
       <div class="card-action">
-        <a href="#">See more of this employer</a>
-        <a href="#">Add a review for this employer</a>
+        <a href="#">See more</a>
+        <a href="#">Add a new review</a>
       </div>
     </div>
   </div>

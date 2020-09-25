@@ -10,10 +10,10 @@
         <form method="POST" action="">
             <div class="row">
                 <div class="col s10">
-                    <select id="agency_name" name="agency_name" class="validate" required>
+                    <select id="agency_name" name="agency_name" id="agency_location" name="agency_location" class="validate" required>
                         <option value="" disabled selected>Choose company</option>
                         {% for company in companies %}
-                        <option value="{{ company.agency_name }}">{{ company.agency_name }}</option>
+                        <option value="{{ company.agency_name }}, {{ company.agency_location }}">{{ company.agency_name }}, {{ company.agency_location }}</option>
                         {% endfor %}
                     </select>
                     <label for="agency_name">Company</label>
