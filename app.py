@@ -84,8 +84,9 @@ def remove_review(review_id):
     review = mongo.db.Reviews.delete_one({"_id": ObjectId(review_id)})
 
     flash("Review deleted successfully")
-    return redirect('get_reviews')
-    
+    print(review_id)
+    return render_template("reviews.html",Reviews=mongo.db.Reviews.find())
+
 #adding new companies:
 
 @app.route('/add_company', methods=["POST"])
