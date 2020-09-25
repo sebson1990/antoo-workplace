@@ -19,7 +19,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 @app.route('/')
 @app.route('/get_reviews')
 def get_reviews():
-    return render_template("reviews.html",Reviews=mongo.db.Reviews.find())
+    return render_template("reviews.html",Reviews=mongo.db.Reviews.find(), agencies=mongo.db.Agencies.find())
 
 #company list:
 
@@ -90,7 +90,7 @@ def remove_review(review_id):
 
 @app.route('/add_company', methods=["GET", "POST"])
 def add_company():
-    #if request.method == "POST": 
+    if request.method == "POST": 
         company = {
             "company_name": request.form.get("company_name"),
             "company_location": request.form.get("company_name"),

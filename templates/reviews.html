@@ -9,6 +9,12 @@
   <div class="col s12 m8 l6">
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
+        
+        {% for agency in agencies %}
+        <div><i class="material-icons">business</i> {{agency.agency_name}}</div>
+        <div><i class="material-icons">location_on</i> {{agency.agency_location}}</div>
+        {% endfor %}
+        <br>
         <span class="card-title">{{review.review_title}}
           <!-- Dropdown Trigger -->
           <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons">create</i></a>
@@ -22,8 +28,8 @@
           {{review.review_content}}</p>
       </div>
       <div class="card-action">
-        <a href="#">See more of this employer</a>
-        <a href="#">Add a review for this employer</a>
+        <a href="{{ url_for('company_profile') }}">See more</a>
+        <a href="{{ url_for('add_review') }}">Add a new review</a>
       </div>
     </div>
   </div>
