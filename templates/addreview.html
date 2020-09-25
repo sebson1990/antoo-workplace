@@ -18,6 +18,7 @@
                     </select>
                     <label for="agency_name">Company</label>
                 </div>
+                <!-- This is a trigger for the modal to add a company.The modal had to be placed and hidden outside this form because it is another form -->
                 <div class="col s2">Can't find it?
                     <button class="" onclick="document.getElementById('primaryButton').click()">Add new </button>
                 </div>
@@ -40,35 +41,40 @@
         </form>
     </div>
     <div class="col s12 m2 l3">
-        
+
     </div>
 </div>
 <!-- modal for adding the company -->
-        <!-- Modal Trigger -->
-        <a id="primaryButton" class="waves-effect waves-light btn modal-trigger" href="#modal1">Add a new company</a>
+<!-- Modal Trigger -->
+<!-- The button needed to be placed outside the form since it's not allowed to place one form inside another. There is a trigger in the above form to launch it -->
+<a style="display: none;" id="primaryButton" class="waves-effect waves-light btn modal-trigger" href="#modal1">Add a new company</a>
 
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <h4>Add a new company</h4>
-                <!-- form to add a company -->
-                <form class="col s12 card-panel grey lighten-5" method="POST" action="">
-                    <input id="review_title" name="review_title" minlength="5" maxlength="50"
-                        class="materialize-textarea" required></input>
-                    <label for="textarea1">Review title</label>
-                    <textarea id="review_content" name="review_content" class="materialize-textarea" minlength="5"
-                        maxlength="200" required></textarea>
-                    <label for="textarea1">Write your review here</label>
-                    <button type="submit" class="btn-large darken-1 text-shadow">
-                        Add Review <i class="fas fa-plus-square right"></i>
-                    </button>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                    </div>
-                </form>
-                <!--  -->
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Add a new company</h4>
+        <!-- form to add a company -->
+        <form class=" card-panel" method="POST" action="">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">business</i>
+                <input id="icon_telephone" minlength="5" maxlength="50" required type="tel" class="validate">
+                <label for="icon_telephone">Company name</label>
             </div>
-        </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">location_on</i>
+                <input id="icon_telephone" minlength="5" maxlength="50" required type="tel" class="validate">
+                <label for="icon_telephone">Location</label>
+            </div>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <button type="submit" class="btn-large darken-1 text-shadow">
+                Add Company <i class="fas fa-plus-square right"></i>
+            </button>
+            <div class="modal-footer">
+            </div>
+        </form>
         <!--  -->
+    </div>
+</div>
+<!--  -->
 
 {% endblock %}
