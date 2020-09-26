@@ -108,10 +108,17 @@ def company_list():
 
 #company profile page:
 
-@app.route('/company_profile/<company_id>')
-def company_profile(company_id):
-    mongo.db.Agencies.find_one({"_id": ObjectId(company_id)},)
-    return render_template("companyprofile.html", agencies=mongo.db.Agencies.find())
+@app.route('/company_profile/<agency>')
+def company_profile(agency):
+    name = agency.split(', ')[0]
+    location = agency.split(', ')[1]
+    reviews = mongo.db.Reviews.find({"agency_name": agency})
+    return render_template("companyprofile.html", Reviews=reviews, name=name, location=location)
+
+#@app.route('/company_profile/<company_id>')
+#def company_profile(company_id):
+#    mongo.db.Agencies.find_one({"_id": ObjectId(company_id)},)
+#    return render_template("companyprofile.html", agencies=mongo.db.Agencies.find())
 
 
 
