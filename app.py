@@ -19,7 +19,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 @app.route('/')
 @app.route('/get_reviews')
 def get_reviews():
-    return render_template("reviews.html",Reviews=mongo.db.Reviews.find(), agencies=mongo.db.Agencies.find())
+    return render_template("reviews.html",Reviews=list(mongo.db.Reviews.find()), agencies=mongo.db.Agencies.find())
 
 #company list:
 
@@ -81,7 +81,7 @@ def edit_review(review_id):
 
 @app.route("/remove_review/<review_id>")
 def remove_review(review_id):
-    review = mongo.db.Reviews.delete_one({"_id": ObjectId(review_id)})
+    mongo.db.Reviews.delete_one({"_id": ObjectId(review_id)})
 
     flash("Review deleted successfully")
     print(review_id)
@@ -108,9 +108,10 @@ def company_list():
 
 #company profile page:
 
-@app.route('/company_profile')
-def company_profile():
-    return render_template("companyprofile.html", Reviews=mongo.db.Reviews.find())
+@app.route('/company_profile/<company_id>')
+def company_profile(company_id):
+    mongo.db.Agencies.find_one({"_id": ObjectId(company_id)},)
+    return render_template("companyprofile.html", agencies=mongo.db.Agencies.find())
 
 
 

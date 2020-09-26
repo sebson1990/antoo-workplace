@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rate your workplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='CSS/styles.css')}}" type="text/css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    
 </head>
 
 <body>
@@ -66,13 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
   });
-// trying to trigger the modal from the dropdown menu, but it is not working. 
-// The button to "add a company" goes to the bottom of the form and it creates bad UX
-function triggerModal() {
-    var modal = document.getElementById("modal1");
-    modal.open(modal)
-    console.log()
-}
+
 </script>
 
 </html>
