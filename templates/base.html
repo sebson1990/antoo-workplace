@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+<div class="page-container">
     <header>
         <nav>
             <div class="nav-wrapper navbar-style">
@@ -24,7 +24,7 @@
                 <ul class="right hide-on-med-and-down">
                     </li>
                     <li><a class="navbar-elements" href="{{ url_for('get_reviews') }}">Home</a></li>
-                    <li><a class="navbar-elements" href="{{ url_for('get_companies') }}">List of workplaces</a></li>
+                    <li><a class="navbar-elements" href="{{ url_for('company_list') }}">List of workplaces</a></li>
                     <li><a class="waves-effect waves-light btn add-review-button" href="{{ url_for('add_review') }}">
                         Add a review <i class="material-icons right">add_circle</i></a></li>
                 </ul>
@@ -51,10 +51,20 @@
         {% endwith %}
     </section>
 
-    {% block content%}
+    {% block content %}
+
     {% endblock %}
+    <br>
+    <br>
 
-
+    <footer class="footer">
+        <p>This project has been developed for Educational purposes</p>
+        <p>Created by Sebastian Dzieniak
+            <a href="https://www.linkedin.com/in/sebastian-dzieniak/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/sebson1990"><i class="fab fa-github"></i></a>
+        </p>
+    </footer>
+</div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>

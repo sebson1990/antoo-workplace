@@ -19,13 +19,24 @@ app.secret_key = os.environ.get("SECRET_KEY")
 @app.route('/')
 @app.route('/get_reviews')
 def get_reviews():
-    return render_template("reviews.html",Reviews=list(mongo.db.Reviews.find()), agencies=mongo.db.Agencies.find())
+    return render_template("reviews.html", Reviews=mongo.db.Reviews.find())
+
+
 
 #company list:
 
-@app.route('/get_companies')
-def get_companies():
+@app.route('/company_list')
+def company_list():
     return render_template("companylist.html", agencies=mongo.db.Agencies.find())
+
+#company profile page:
+
+#@app.route('/company_profile/<agency>')
+#def company_profile(agency):
+#    name = agency.split(', ')[0]
+#    location = agency.split(', ')[1]
+#    reviews = mongo.db.Reviews.find({"agency_name": agency})
+#    return render_template("companyprofile.html", Reviews=reviews, name=name, location=location)   
 
 #adding new reviews:
 
@@ -98,13 +109,8 @@ def add_company():
         }
         mongo.db.Reviews.insert_one(company)
         flash("Company Successfully Added")
+     
 
-
-#company list:
-
-@app.route('/company_list')
-def company_list():
-    return render_template("companylist.html")
 
 #company profile page:
 
@@ -114,6 +120,14 @@ def company_profile(agency):
     location = agency.split(', ')[1]
     reviews = mongo.db.Reviews.find({"agency_name": agency})
     return render_template("companyprofile.html", Reviews=reviews, name=name, location=location)
+
+#company profile page coming from the list of companies:
+
+#@app.route('/company_profile1/<agency>')
+#def company_profile1(agency):
+#    agencies = mongo.db.Agency.find_one(agency)
+#    return render_template("companyprofile1.html", Reviews=list(mongo.db.Reviews.find()), agencies=agencies)
+
 
 #@app.route('/company_profile/<company_id>')
 #def company_profile(company_id):
