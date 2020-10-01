@@ -4,6 +4,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from forms import AddReviewForm
 
+
 app = Flask(__name__)
 
 if os.path.exists("env.py"):
@@ -19,24 +20,13 @@ app.secret_key = os.environ.get("SECRET_KEY")
 @app.route('/')
 @app.route('/get_reviews')
 def get_reviews():
-    return render_template("reviews.html", Reviews=mongo.db.Reviews.find())
-
-
+    return render_template("reviews.html",Reviews=list(mongo.db.Reviews.find()), agencies=mongo.db.Agencies.find())
 
 #company list:
 
-@app.route('/company_list')
-def company_list():
+@app.route('/get_companies')
+def get_companies():
     return render_template("companylist.html", agencies=mongo.db.Agencies.find())
-
-#company profile page:
-
-#@app.route('/company_profile/<agency>')
-#def company_profile(agency):
-#    name = agency.split(', ')[0]
-#    location = agency.split(', ')[1]
-#    reviews = mongo.db.Reviews.find({"agency_name": agency})
-#    return render_template("companyprofile.html", Reviews=reviews, name=name, location=location)   
 
 #adding new reviews:
 
@@ -100,17 +90,23 @@ def remove_review(review_id):
 
 #adding new companies:
 
-@app.route('/add_company', methods=["POST"])
+@app.route('/add_company', methods=["GET", "POST"])
 def add_company():
     if request.method == "POST": 
         company = {
-            "company_name": request.form.get("company_name"),
-            "company_location": request.form.get("company_location"),
+            "agency_name": request.form.get("agency_name"),
+            "agency_location": request.form.get("agency_location"),
         }
-        mongo.db.Reviews.insert_one(company)
+        mongo.db.Agencies.insert_one(company)
         flash("Company Successfully Added")
-     
+    return render_template("addcompany.html")
 
+
+#company list:
+
+@app.route('/company_list')
+def company_list():
+    return render_template("companylist.html")
 
 #company profile page:
 
@@ -121,20 +117,10 @@ def company_profile(agency):
     reviews = mongo.db.Reviews.find({"agency_name": agency})
     return render_template("companyprofile.html", Reviews=reviews, name=name, location=location)
 
-#company profile page coming from the list of companies:
-
-#@app.route('/company_profile1/<agency>')
-#def company_profile1(agency):
-#    agencies = mongo.db.Agency.find_one(agency)
-#    return render_template("companyprofile1.html", Reviews=list(mongo.db.Reviews.find()), agencies=agencies)
-
-
-#@app.route('/company_profile/<company_id>')
-#def company_profile(company_id):
-#    mongo.db.Agencies.find_one({"_id": ObjectId(company_id)},)
-#    return render_template("companyprofile.html", agencies=mongo.db.Agencies.find())
-
-
+@app.route('/company_profile1/<agency_id>')
+def company_profile1(agency_id):
+    company = mongo.db.Agencies.find_one({"_id": ObjectId(agency_id)})
+    return render_template("companyprofile.html", company=company)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

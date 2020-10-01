@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add company</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='CSS/styles.css')}}" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row flashes">
+        <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <!--  -->
+    <div class="row">
+        <div class="col sm 2"></div>
+        <div class="col sm 8">
+            <form class=" card-panel" method="POST" action="">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">business</i>
+                    <input id="agency_name" name="agency_name" minlength="5" maxlength="50" class="validate">
+                    <label for="agency_name">Company name</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">location_on</i>
+                    <input id="agency_location" name="agency_location" minlength="5" maxlength="50" class="validate">
+                    <label for="agency_location">Location</label>
+                </div>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                <button type="submit" class="btn-large darken-1 text-shadow">
+                    Add Company <i class="fas fa-plus-square right"></i>
+                </button>
+            </form>
+        </div>
+        <div class="col sm 2"></div>
+    </div>
+</body>
+
+</html>
