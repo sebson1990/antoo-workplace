@@ -118,6 +118,22 @@ def add_company():
         flash("Company Successfully Added")
     return render_template("addcompany.html")
 
+#editing companies:
+
+@app.route("/edit_company/<agency_id>", methods=["GET", "POST"])
+def edit_company(agency_id):
+    if request.method == 'POST':
+        submit = {
+            "agency_name": request.form.get("agency_name"),
+            "agency_location": request.form.get("review_title"),
+        }
+        mongo.db.Agencies.update({"_id": ObjectId(agency_id)}, submit)
+        flash("Company Successfully Updated")
+
+    company= mongo.db.Agencies.find_one({"_id": ObjectId(agency_id)})
+    companies = mongo.db.Agencies.find().sort("agency_name", 1)
+    return render_template("editcompany.html", company=company, companies=companies)
+
 
 #company list:
 

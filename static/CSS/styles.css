@@ -67,6 +67,12 @@ body .background-image  {
     padding: 35px;
 }
 
+/* editing review card */
+
+.review-edit-card {
+    padding: 33px !important;
+}
+
 /* adding companies */
 
 .cancel-button a {
