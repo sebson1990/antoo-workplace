@@ -11,11 +11,11 @@
       <div class="card-content white-text">
         <div class="card-title"><i class="material-icons">business</i>{{agency.agency_name}}</div>
         <!-- Dropdown Trigger -->
-        <a class='dropdown-trigger' href='#' data-target='#'><i class="material-icons">create</i></a>
+        <a class='dropdown-trigger' href='#' data-target='{{agency._id}}'><i class="material-icons">create</i></a>
         <!-- Dropdown Structure -->
-        <ul id='#' class='dropdown-content'>
+        <ul id='{{agency._id}}' class='dropdown-content'>
           <li><a href="{{ url_for('edit_company', agency_id=agency._id) }}">Edit</a></li>
-          <li><a href="#">Remove</a></li>
+          <li><a href="{{ url_for('remove_company', agency_id=agency._id) }}">Remove</a></li>
         </ul>
         <!-- Modal for editing a company-->
         <!-- <div id="modal1" class="modal">

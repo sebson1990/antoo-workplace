@@ -134,6 +134,16 @@ def edit_company(agency_id):
     companies = mongo.db.Agencies.find().sort("agency_name", 1)
     return render_template("editcompany.html", company=company, companies=companies)
 
+#deleting companies:
+
+@app.route("/remove_company/<agency_id>")
+def remove_company(agency_id):
+    mongo.db.Agencies.delete_one({"_id": ObjectId(agency_id)})
+
+    flash("Company deleted successfully")
+    return render_template("companylist.html",agencies=mongo.db.Agencies.find())
+
+
 
 #company list:
 
