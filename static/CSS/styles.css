@@ -11,6 +11,8 @@ body {
 }
 .navbar-elements {
     color: #7F7F7F !important;
+    font-size: large;
+    font-weight: 900;
 }
 
 .center-text {
@@ -25,6 +27,11 @@ body {
     margin-left: 10px;
 }
 
+.brand-logo {
+    color: #273F5F !important;
+    font-weight: bold !important;
+}
+
 
 /* body */
 
@@ -34,13 +41,43 @@ body {
     margin-bottom: 0px !important;
 }
 
+/* adding companies */
 
+.cancel-button a {
+    color: white;
+    background-color: #273f5f !important;
+}
+.add-company-button a {
+    color: #273F5F;
+}
+
+.x-button a {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: xx-large;
+    font-weight: 900;
+}
 /* Review cards */
 .dropdown-trigger {
     position: absolute;
     right: 10px;
     top: 5px;
-    color: gold;
+    color: #ECA400;
+}
+
+.company-name {
+    font-size: 20px !important;
+    font-weight: 700;
+}
+
+.card {
+    background-color: #273F5F;
+}
+
+.card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: #ECA400 !important;
+    font-weight: bold;
 }
 
 /* company profile */
@@ -106,6 +143,17 @@ body {
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+  }
+  @media only screen and (max-width: 992px) {
+    .brand-logo {
+        position: relative !important;
+        left: 40% !important;
+    }
+  }
+    
+
+  .sidenav-trigger {
+      color: #273F5F !important;
   }
   
 /* Footer */

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='CSS/styles.css')}}" type="text/css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    
+
 </head>
 
 <body>
@@ -20,34 +20,36 @@
                 <a href="#!" class="brand-logo navbar-elements logo-style">
                     <i class="large material-icons">business</i> Rate Your Workplace!
                 </a>
-                <a href="{{ url_for('get_reviews') }}" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <a href="{{ url_for('get_reviews') }}" data-target="mobile-demo" class="sidenav-trigger"><i
+                        class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    </li>
                     <li><a class="navbar-elements" href="{{ url_for('get_reviews') }}">Home</a></li>
                     <li><a class="navbar-elements" href="{{ url_for('get_companies') }}">List of workplaces</a></li>
                     <li><a class="waves-effect waves-light btn add-review-button" href="{{ url_for('add_review') }}">
-                        Add a review <i class="material-icons right">add_circle</i></a></li>
+                            Add a review <i class="material-icons right">add_circle</i></a></li>
                 </ul>
             </div>
         </nav>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a class="navbar-elements" href="{{ url_for('get_reviews') }}">Home</a></li>
+            <li><a class="navbar-elements" href="{{ url_for('get_companies') }}">List of workplaces</a></li>
+            <li><a class="waves-effect waves-light btn add-review-button" href="{{ url_for('add_review') }}">
+                    Add a review <i class="material-icons right">add_circle</i></a></li>
+        </ul>
+
     </header>
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
-    </ul>
+
 
     <section>
         <!-- flash messages -->
         {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="row flashes">
-                        <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
-                    </div>
-                {% endfor %}
-            {% endif %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row flashes">
+            <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
+        </div>
+        {% endfor %}
+        {% endif %}
         {% endwith %}
     </section>
 
@@ -58,14 +60,16 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems);
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems);
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-  });
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var instances = M.Dropdown.init(elems);
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+    });
 
 </script>
 

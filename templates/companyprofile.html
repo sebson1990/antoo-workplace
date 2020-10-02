@@ -25,7 +25,7 @@
         <div>
             <h5 class="center">Reviews about this workplace:</h5>
         </div>
-        {% for review in Reviews | reverse %}
+        {% for review in reviews | reverse %}
         <div class="card grey lighten-1 review-cards">
             <div class="card-content white-text">
                 <span class="card-title">{{review.review_title}}

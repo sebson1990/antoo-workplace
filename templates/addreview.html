@@ -22,17 +22,29 @@
                 </div>
                 <!-- Modal Trigger -->
                 <div class="col s2">Can't find it?
-                    <button><a class="waves-effect waves-light modal-trigger" href="#modal1">Add new</a>
+                    <button class="add-company-button"><a class="waves-effect waves-light modal-trigger"
+                            href="#modal1">Add new</a>
                     </button>
                 </div>
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal">
                     <div class="modal-content">
-                        <h4>Add a new company</h4>
-                        <iframe width="750" height="315" src="{{ url_for('add_company') }}" frameborder="0"
+                        <div class="x-button"><a href="#!" class="modal-close waves-effect waves-green btn-flat">X</a>
+                        </div>
+                        <div class="row">
+                            <div class="col sm4"></div>
+                            <div class="col sm4">
+                                <h4 style="text-align: center !important">Add a new company</h4>
+                            </div>
+                            <div class="col sm4"></div>
+                        </div>
+                        <br>
+                        <iframe width="750" height="250" src="{{ url_for('add_company') }}" frameborder="0"
                             allowfullscreen></iframe>
                     </div>
+
                 </div>
+
                 <!--  -->
             </div>
 
@@ -47,8 +59,11 @@
                     maxlength="200" required></textarea>
                 <label for="textarea1">Write your review here</label>
             </div>
-            <button type="submit" class="btn-large darken-1 text-shadow">
-                Add Review <i class="fas fa-plus-square right"></i>
+            <button class="btn cancel-button" style="background-color: #273F5F;">
+                <a href="{{ url_for('get_reviews') }}">Cancel</a>
+            </button>
+            <button type="submit" class="waves-effect waves-light btn add-review-button">
+                Add Review
             </button>
         </form>
     </div>

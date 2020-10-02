@@ -10,6 +10,15 @@
             <div class="row">
                 <div class="col s2 m2 l2 company-logo"><i class="medium material-icons company-icon">domain</i></div>
                 <div class="col s10 m10 l10">
+                    <!-- {% for company in companies %}
+                        {% if company.agency_name == review.agency_name %}
+                            <option value="{{ company.agency_name }}" selected>{{ company.agency_name }}</option>
+                        {% else %}
+                            <option value="{{ company.agency_name }}">{{ company.agency_name }}</option>
+                        {% endif %}
+                    {% endfor %} -->
+                    
+                    {% for company in companies %}
                     <ul>
                         <li><i class="material-icons">content_paste</i> {{name}}</li>
                         <br>
@@ -19,6 +28,7 @@
                         <br>
                         <li><i class="material-icons">mood_bad</i> Number of negative reviews:#</li> 
                     </ul>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -26,7 +36,7 @@
             <h5 class="center">Reviews about this workplace:</h5>
         </div>
         {% for review in Reviews | reverse %}
-         
+        
         <div class="card grey lighten-1 review-cards">
             <div class="card-content white-text">
                 {{review.agency_name}}
