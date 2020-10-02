@@ -1,5 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
+    background-image: url(backgroundimg.jpg);
+    background-size: contain !important;
   }
 
 
@@ -41,6 +43,12 @@ body {
     margin-bottom: 0px !important;
 }
 
+/* adding reviews page */
+
+.card-new-review{
+    padding: 35px;
+}
+
 /* adding companies */
 
 .cancel-button a {
@@ -73,6 +81,7 @@ body {
 
 .card {
     background-color: #273F5F;
+    margin-top: 33px;
 }
 
 .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
