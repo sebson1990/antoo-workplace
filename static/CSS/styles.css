@@ -1,11 +1,20 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url(backgroundimg.jpg);
-    background-size: contain !important;
+    z-index: 5;
+
+   
   }
-.background-image  {
-    background-image: url(backgroundimg.jpg);
+body .background-image  {
+    position: absolute;
+    background-image: url(backgroundimg.jpg) ;
     background-size: contain !important;
+    opacity: 0.3;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
 }
 
 
