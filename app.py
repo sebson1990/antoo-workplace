@@ -19,8 +19,9 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 @app.route('/')
 @app.route('/get_reviews')
-def get_reviews():
-    return render_template("reviews.html",reviews=mongo.db.Reviews.find(), agencies=mongo.db.Agencies.find())
+def get_reviews(agency_id):
+    company = mongo.db.Agencies.find_one({"_id": ObjectId(agency_id)})
+    return render_template("reviews.html",reviews=mongo.db.Reviews.find(), agencies=mongo.db.Agencies.find(), company=company, name=company['agency_name'], location=company['agency_location'])
 
 #company list:
 
@@ -70,6 +71,8 @@ def add_review():
             "review_title": request.form.get("review_title"),
             "review_content": request.form.get("review_content"),
             "agency": ObjectId(company["_id"]),
+            "positive_review": request.form.get("positive_review"),
+            "negative_review": request.form.get("negative_review")
         }
         mongo.db.Reviews.insert_one(review)
         flash("Review Successfully Added")
