@@ -150,7 +150,8 @@ main {
   }
 footer {
     background-color: #6e93c4 !important;
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
     width: 100%;
     padding: 10px;
+    margin-top: 170px
 }

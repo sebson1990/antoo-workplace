@@ -19,9 +19,8 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 @app.route('/')
 @app.route('/get_reviews')
-def get_reviews(agency_id):
-    company = mongo.db.Agencies.find_one({"_id": ObjectId(agency_id)})
-    return render_template("reviews.html",reviews=mongo.db.Reviews.find(), agencies=mongo.db.Agencies.find(), company=company, name=company['agency_name'], location=company['agency_location'])
+def get_reviews():
+    return render_template("reviews.html",reviews=mongo.db.Reviews.find(), agencies=mongo.db.Agencies.find())
 
 #company list:
 
@@ -66,11 +65,13 @@ def get_companies():
 def add_review():
     if request.method == "POST":
         formatted_agency_name = request.form.get("agency_name").split(', ')[0]  # Get just the name, ignore the location
-        company = mongo.db.Agencies.find_one({"agency_name": formatted_agency_name})   # Load the company from the name (also making sure it exists)
+        agency = mongo.db.Agencies.find_one({"agency_name": formatted_agency_name})  # Load the agency from the name (also making sure it exists)
         review = {
             "review_title": request.form.get("review_title"),
             "review_content": request.form.get("review_content"),
-            "agency": ObjectId(company["_id"]),
+            "agency_id": agency["_id"],
+            "agency_name": agency["agency_name"],
+            "agency_location": agency["agency_location"],
             "positive_review": request.form.get("positive_review"),
             "negative_review": request.form.get("negative_review")
         }

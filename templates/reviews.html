@@ -12,7 +12,7 @@
   <div class="col s12 m8 l6">
     <div class="card">
       <div class="card-content white-text">
-        <div class="company-name"><i class="material-icons">business</i> {{agency_name}}</div>
+        <div class="company-name"><i class="material-icons">business</i> {{review.agency_name}}, {{review.agency_location}}</div>
         <br>
         <span class="card-title">{{review.review_title}}
           <!-- Dropdown Trigger -->
@@ -27,7 +27,7 @@
           {{review.review_content}}</p>
       </div>
       <div class="card-action">
-        <a href="{{ url_for('company_profile', agency=review.agency_name) }}">See more</a>        
+        <a href="{{ url_for('company_profile1', agency_id=review.agency_id) }}">See more</a>        
       </div>
     </div>
   </div>
